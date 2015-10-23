@@ -6,5 +6,5 @@ public interface Gate {
 	
 	public void openGate();
 	public void closeGate();
-	public GateStatus isOpen();
+	public boolean isOpen();
 }

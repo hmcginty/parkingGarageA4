@@ -17,9 +17,9 @@ public class ExitGate implements Gate{
 	}
 
 	@Override
-	public GateStatus isOpen() {
+	public boolean isOpen() {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 }

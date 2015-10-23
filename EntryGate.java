@@ -1,5 +1,25 @@
 package cs414.a4.hmcginty;
 
-public class EntryGate {
+public class EntryGate implements Gate{
 
+	private GateStatus status;
+	
+	@Override
+	public void openGate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void closeGate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public GateStatus isOpen() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

@@ -1,5 +1,10 @@
 package cs414.a4.hmcginty;
 
-public interface Gate {
+import cs414.a4.hmcginty.GateStatus;
 
+public interface Gate {
+	
+	public void openGate();
+	public void closeGate();
+	public GateStatus isOpen();
 }

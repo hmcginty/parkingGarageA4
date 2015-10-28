@@ -65,7 +65,7 @@ public class Garage {
 	
 	// Should return true if load has not reached capacity.
 	public boolean createTicket(){
-		if(this.capacity - this.activeTickets.size() == 0){
+		if(this.getAvailableCapacity() == 0){
 			System.out.println("\n Sorry the garage is full right now. Please come back later.");
 			return false;
 		}else{

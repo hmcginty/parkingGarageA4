@@ -3,8 +3,11 @@ package cs414.a4.hmcginty;
 import java.util.Scanner;
 
 public class SystemInterface {
-
+	public static Garage g1;
+	
 	public static void main(String[] args) {
+		
+		g1 = new Garage(4, 2.5); // will later make this initialize via command line args.
 		
 		Scanner user_input = new Scanner(System.in);
 		int user_value;

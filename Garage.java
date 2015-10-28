@@ -33,4 +33,14 @@ public class Garage {
 	public double getParkingRate(){
 		return this.rate;
 	}
+
+	public void printTicket() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean hasActiveTicket(int ticketID) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

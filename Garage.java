@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 
 public class Garage {
 
@@ -13,7 +12,6 @@ public class Garage {
 	private ArrayList<Ticket> activeTickets;
 	private int ticketCount; // Used as place marker for what the next ticket number should be. 
 	private int capacity;
-	private int load; // For clarification load is the number of vehicles currently in the garage.
 	private double rate;
 	private double moneyEarned;
 	private EntryGate entry;
@@ -23,7 +21,6 @@ public class Garage {
 		this.ticketHistory = new ArrayList<Ticket>();
 		this.activeTickets = new ArrayList<Ticket>();
 		this.ticketCount = 0;
-		this.load = 0;
 		this.capacity = size;
 		this.rate = parkingRate;
 		this.moneyEarned = 0.0;
@@ -41,7 +38,7 @@ public class Garage {
 	}
 	
 	public int getAvailableCapacity(){
-		return (this.capacity - this.load);
+		return (this.capacity - this.activeTickets.size());
 	}
 	
 	public double getParkingRate(){
@@ -68,13 +65,13 @@ public class Garage {
 	
 	// Should return true if load has not reached capacity.
 	public boolean createTicket(){
-		if(this.capacity - this.load == 0){
+		if(this.capacity - this.activeTickets.size() == 0){
 			System.out.println("\n Sorry the garage is full right now. Please come back later.");
 			return false;
 		}else{
 			Calendar cal = Calendar.getInstance();
 			Date tStamp = cal.getTime();
-			Ticket t = new Ticket(this.ticketCount+1, tStamp);
+			Ticket t = new Ticket(this.ticketCount+1, tStamp, this.rate);
 			this.ticketCount = this.ticketCount++;
 			t.printTicket();
 			this.activeTickets.add(t);
@@ -95,7 +92,7 @@ public class Garage {
 		Calendar cal = Calendar.getInstance();
 		Date tOut = cal.getTime();
 		outTicket.stampOutTime(tOut);
-		double amountDue = outTicket.getTicketCost(this.rate);
+		double amountDue = outTicket.getTicketCost();
 		processPayment(amountDue);
 		this.activeTickets.remove(outTicket);
 		this.ticketHistory.add(outTicket);
@@ -160,13 +157,23 @@ public class Garage {
 	
 	// Returns formatted string of current load, and money collected. 
 	public String getCurrentStatus() {
-		// TODO Auto-generated method stub
-		return null;
+		return "\n Current number of people in the garrage: " + this.activeTickets.size() + "\n Money earned: $" + this.moneyEarned;
 	}
 
 	// Returns minute by minute load and money collected. 
 	public String getHistory() {
-		// TODO Auto-generated method stub
-		return null;
+		String ret = "Tickets processed \n";
+		
+		for(Ticket t: this.ticketHistory){
+			ret += "	" + t.toString() + "\n";
+		}
+		
+		ret += "\nTickets of cars still in garage \n";
+		
+		for(Ticket t: this.activeTickets){
+			ret += "	" + t.toString();
+		}
+		
+		return ret;
 	}
 }

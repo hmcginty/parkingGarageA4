@@ -50,8 +50,7 @@ public class AdminView {
 		System.out.println(SystemInterface.g1.getCurrentStatus());
 	}
 	
-	// Displays time lapse of number of people in the garage and money earned. 
-	// Going to show per minute since there is no database back end and this makes for faster testing of concept.  
+	// Displays all tickets that have been in the system.  
 	public static void getGarageHistory(){
 		System.out.println(SystemInterface.g1.getHistory());
 	}

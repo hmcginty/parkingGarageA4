@@ -60,7 +60,10 @@ public class GarageView {
 			uVal = uIn.nextInt();
 			
 			if(SystemInterface.g1.hasActiveTicket(uVal)) {
-				// print cost, validate payment and print receipt. 
+				// print cost, validate payment and print receipt.
+				SystemInterface.g1.punchOutTicket(uVal);
+				System.out.println("\n Have a nice Day!");
+				isDoneExiting = true;
 			}else{
 				System.out.println("\n Ticket is not valid, please make sure you entered the correct ticket number.");
 			}

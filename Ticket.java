@@ -19,6 +19,7 @@ public class Ticket {
 		this.costRate = rate;
 	}
 
+	// Not to be confused with toString() this is so that the customer has a ticket number
 	public void printTicket() {
 		System.out.println("\n Ticket number: " + this.ticketNum);
 	}
@@ -54,7 +55,7 @@ public class Ticket {
 	
 	public String toString(){
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-		if(this.outStamp.equals(null)){
+		if(this.outStamp == null){
 			return "Ticket number: " + ticketNum + " Time in: " + dateFormat.format(inStamp);
 		}else{
 			return "Ticket number: " + ticketNum + " Time in: " + dateFormat.format(inStamp) + " Time out: " + dateFormat.format(outStamp) + " TicketCost = " + this.getTicketCost();

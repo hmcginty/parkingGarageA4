@@ -105,13 +105,13 @@ public class Garage {
 		int uCard;
 		
 		while(validPayment == false){
-			System.out.println(" The amount you owe is: " +  amountDue);
+			System.out.println(" The amount you owe is: " +  amountDue);  			
 			System.out.println(" Please enter a valid credit card number.");
 			uCard = uIn.nextInt();
 			
 			if(PaymentAuthentication.isValidPayment(uCard)){
 				this.moneyEarned += amountDue;
-				System.out.println("Thank for your payment.");
+				System.out.println("Thank for your payment.");							// These lines are done to print a receipt rather then a method.
 				System.out.println(amountDue + " will be charged to your card ");
 				validPayment = true;
 			}else{

@@ -43,4 +43,14 @@ public class Garage {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public String getCurrentStatus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getHistory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

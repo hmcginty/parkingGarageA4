@@ -18,7 +18,7 @@ public class GarageView {
 		int uVal;
 		
 		while(isDoneEntering == false) {
-			System.out.println("\n Welcome to the garage please select what you would like to do. \n");
+			System.out.println("\n Welcome to the garage please select what you would like to do. ");
 			System.out.println("");
 			System.out.println("	1. Print ticket and enter garage");
 			System.out.println("	2. Exit and leave garage"); // This is for just in case a customer pulls up and decides they don't actually want to enter

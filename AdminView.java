@@ -17,7 +17,7 @@ public class AdminView {
 		int uVal;
 		
 		while(isDoneAdminMode == false) {
-			System.out.println("\n Welcome Admin, please select the information you wish to obtain. \n");
+			System.out.println("\n Welcome Admin, please select the information you wish to obtain. ");
 			System.out.println("");
 			System.out.println("	1. View current garage status");
 			System.out.println("	2. View garage history");
@@ -42,16 +42,17 @@ public class AdminView {
 					break;
 			}
 		}
+		uIn.close();
 	}
 	
 	// Displays current number of active tickets in the system and current money gathered. 
 	public static void getGarageStatus(){
-		
+		System.out.println(SystemInterface.g1.getCurrentStatus());
 	}
 	
 	// Displays time lapse of number of people in the garage and money earned. 
 	// Going to show per minute since there is no database back end and this makes for faster testing of concept.  
 	public static void getGarageHistory(){
-		
+		System.out.println(SystemInterface.g1.getHistory());
 	}
 }

@@ -28,8 +28,10 @@ public class GarageView {
 			
 			switch (uVal) {
 				case 1:
-					SystemInterface.g1.printTicket();
-					isDoneEntering = true;
+					boolean check = SystemInterface.g1.createTicket();
+					if(check == true){
+						isDoneEntering = true;
+					}
 					break;
 				case 2:
 					System.out.println("\n Thank you for stopping by");

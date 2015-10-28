@@ -6,6 +6,7 @@ public class Garage {
 
 	private ArrayList<Ticket> ticketHistory;
 	private ArrayList<Ticket> activeTickets;
+	private int ticketCount; // Used as place marker for what the next ticket number should be. 
 	private int capacity;
 	private int load; // For clarification load is the number of vehicles currently in the garage.
 	private double rate;
@@ -15,12 +16,16 @@ public class Garage {
 	public Garage(int size, double parkingRate) {
 		this.ticketHistory = new ArrayList<Ticket>();
 		this.activeTickets = new ArrayList<Ticket>();
+		this.ticketCount = 0;
 		this.load = 0;
 		this.capacity = size;
 		this.rate = parkingRate;
 		this.entry = new EntryGate();
 		this.exit = new ExitGate();
 	}
+	
+	
+	/* Get, set, and check methods */
 	
 	public int getCapacity(){
 		return this.capacity;
@@ -34,15 +39,37 @@ public class Garage {
 		return this.rate;
 	}
 
-	public void printTicket() {
-		// TODO Auto-generated method stub
+	public void setParkingRate(double newRate){
+		this.rate = newRate;
+	}
+	
+	public boolean hasActiveTicket(int ticketID) {
+		Ticket t = new Ticket(ticketID);
+		if(this.activeTickets.contains(t)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	
+	/* Logic methods */
+	
+	// Should return true if load has not reached capacity.
+	public boolean createTicket(){
+		if(this.capacity - this.load == 0){
+			System.out.println("\n Sorry the garage is full right now. Please come back later.");
+			return false;
+		}else{
+			Ticket t = new Ticket(this.ticketCount+1);
+			this.ticketCount = this.ticketCount++;
+			t.printTicket();
+			this.activeTickets.add(t);
+			return true;
+		}
 		
 	}
 
-	public boolean hasActiveTicket(int ticketID) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	public String getCurrentStatus() {
 		// TODO Auto-generated method stub

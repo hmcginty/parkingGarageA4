@@ -3,7 +3,7 @@ package cs414.a4.hmcginty;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 
 public class Garage {
@@ -72,7 +72,7 @@ public class Garage {
 			Calendar cal = Calendar.getInstance();
 			Date tStamp = cal.getTime();
 			Ticket t = new Ticket(this.ticketCount+1, tStamp, this.rate);
-			this.ticketCount = this.ticketCount++;
+			this.ticketCount = this.ticketCount + 1;
 			t.printTicket();
 			this.activeTickets.add(t);
 			return true;
@@ -99,26 +99,25 @@ public class Garage {
 	}
 	
 	public void processPayment(double amountDue){
-		Scanner uIn = new Scanner(System.in);
 		
 		boolean validPayment = false;
 		int uCard;
 		
 		while(validPayment == false){
-			System.out.println(" The amount you owe is: " +  amountDue);  			
+			System.out.println("\n The amount you owe is: " +  amountDue);  			
 			System.out.println(" Please enter a valid credit card number.");
-			uCard = uIn.nextInt();
+			
+			String nextIntString = SystemInterface.user_input.nextLine();
+			uCard = Integer.parseInt(nextIntString);
 			
 			if(PaymentAuthentication.isValidPayment(uCard)){
 				this.moneyEarned += amountDue;
-				System.out.println("Thank for your payment.");							// These lines are done to print a receipt rather then a method.
-				System.out.println(amountDue + " will be charged to your card ");
+				System.out.println("\n Thank for your payment.\n " + amountDue + " will be charged to your card ");
 				validPayment = true;
 			}else{
 				System.out.println(" I'm sorry that is not a valid credit card number.");
 			}
 		}
-		uIn.close();
 	}
 	
 	// Should open EntryGate and close EntryGate after small wait time.

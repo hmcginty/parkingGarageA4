@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class SystemInterface {
 	public static Garage g1;
+	public static Scanner user_input = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		
 		g1 = new Garage(4, 2.5); // will later make this initialize via command line args.
 		
-		Scanner user_input = new Scanner(System.in);
-		int user_value;
+		int user_value = 0;
 		boolean isDone = false;
 		
 		while(isDone == false){
@@ -23,7 +23,9 @@ public class SystemInterface {
 			System.out.println("	4. Exit Application");
 			System.out.println("");
 			
-			user_value = user_input.nextInt();
+			String nextIntString = user_input.nextLine();
+			user_value = Integer.parseInt(nextIntString);
+			 
 			
 			switch (user_value) {
 				case 1: 

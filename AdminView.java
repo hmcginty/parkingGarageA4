@@ -1,6 +1,6 @@
 package cs414.a4.hmcginty;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 import cs414.a4.hmcginty.SystemInterface;
 
@@ -10,8 +10,6 @@ import cs414.a4.hmcginty.SystemInterface;
 public class AdminView {
 
 	public static void enterAdminMode(){
-		
-		Scanner uIn = new Scanner(System.in);
 		
 		boolean isDoneAdminMode = false;
 		int uVal;
@@ -24,7 +22,8 @@ public class AdminView {
 			System.out.println("	3. Logout");
 			System.out.println("");
 			
-			uVal = uIn.nextInt();
+			String nextIntString = SystemInterface.user_input.nextLine();
+			uVal = Integer.parseInt(nextIntString);
 			
 			switch (uVal){
 				case 1:
@@ -42,7 +41,6 @@ public class AdminView {
 					break;
 			}
 		}
-		uIn.close();
 	}
 	
 	// Displays current number of active tickets in the system and current money gathered. 

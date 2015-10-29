@@ -8,14 +8,14 @@ import java.util.Date;
 public class Ticket {
 
 	private int ticketNum;
-	private Date inStamp;
-	private Date outStamp;
+	private Date timeIn;
+	private Date timeOut;
 	private double costRate;
 	
 	public Ticket(int tNum, Date tStamp, double rate) {
 		this.ticketNum = tNum;
-		this.inStamp = tStamp;
-		this.outStamp = null;
+		this.timeIn = tStamp;
+		this.timeOut = null;
 		this.costRate = rate;
 	}
 
@@ -29,16 +29,16 @@ public class Ticket {
 	}
 	
 	public void stampOutTime(Date tStamp){
-		this.outStamp = tStamp;
+		this.timeOut = tStamp;
 	}
 	
 	// Calculation of cost based on minutes elapsed. 
-	// Negative return is done as a precaution just in case some how outStamp is not initialized. 
+	// Negative return is done as a precaution just in case some how timeOut is not initialized. 
 	public double getTicketCost(){
-		if(outStamp.equals(null)){
+		if(timeOut.equals(null)){
 			return -1.0;
 		}else{
-			long diff = outStamp.getTime() - inStamp.getTime();
+			long diff = timeOut.getTime() - timeIn.getTime();
 			long diffMinutes = diff / (60*1000) % 60; // calculation obtained from : http://www.mkyong.com/java/how-to-calculate-date-time-difference-in-java/
 			return diffMinutes*this.costRate;
 		}
@@ -55,10 +55,10 @@ public class Ticket {
 	
 	public String toString(){
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-		if(this.outStamp == null){
-			return "Ticket number: " + ticketNum + " Time in: " + dateFormat.format(inStamp);
+		if(this.timeOut == null){
+			return "Ticket number: " + ticketNum + " Time in: " + dateFormat.format(timeIn);
 		}else{
-			return "Ticket number: " + ticketNum + " Time in: " + dateFormat.format(inStamp) + " Time out: " + dateFormat.format(outStamp) + " TicketCost = " + this.getTicketCost();
+			return "Ticket number: " + ticketNum + " Time in: " + dateFormat.format(timeIn) + " Time out: " + dateFormat.format(timeOut) + " TicketCost = " + this.getTicketCost();
 		}
 	}
 }
